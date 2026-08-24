@@ -48,3 +48,9 @@ Review cadence: full register reviewed quarterly alongside the User Access Revie
 
 ---
 Part of a broader self-directed GRC/IAM/Healthcare IT portfolio: [github.com/shaquillej](https://github.com/shaquillej)
+
+
+---
+
+## Project Status
+Actively maintained as part of a coordinated 8-project portfolio spanning Healthcare IT, IAM, and GRC. See the full set and how they connect at [github.com/shaquillej](https://github.com/shaquillej), or the write-ups at the [portfolio site](https://sites.google.com/view/shaquille-jackson-healthcare-i).
