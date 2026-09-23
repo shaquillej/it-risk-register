@@ -13,6 +13,7 @@ Two entries (R-04, R-07) are deliberately cross-validated against findings alrea
 - A full 10-risk register spanning Access Control, Third-Party/Vendor, Governance, Data Governance, and Technical/Operational categories.
 - Likelihood (1–5) x Impact (1–5) scoring for every risk, banded 1–6 Low / 7–14 Medium / 15–25 High.
 - A documented treatment plan (mitigate, transfer, accept, or avoid), named owner role, and current status for every entry.
+- A residual-risk pass showing how in-flight treatment (Mitigating / Mitigated / In Progress) changes the score using one documented reduction rule, not eyeballed re-scoring.
 - A companion Word document (`IT_Risk_Register.docx`) formatted as a deliverable a GRC or IT risk analyst would actually hand to a manager or auditor.
 
 ## Design Approach
@@ -21,7 +22,7 @@ Each risk was scored independently using the same likelihood/impact criteria bef
 
 ## Tools and Skills Demonstrated
 
-Risk scoring methodology (likelihood x impact), risk register construction and maintenance, treatment planning, cross-functional ownership assignment, and review-cadence documentation.
+Risk scoring methodology (likelihood x impact), risk register construction and maintenance, treatment planning, cross-functional ownership assignment, review-cadence documentation, and inherent-vs-residual risk differentiation.
 
 ## Risk Summary
 
@@ -38,7 +39,30 @@ Risk scoring methodology (likelihood x impact), risk register construction and m
 | R-09 | Support-ticket and access-log data retention/disposal schedule is undocumented | Data Governance | 2 | 3 | 6 | Low | IT / Compliance | Open |
 | R-10 | New SaaS vendors can be onboarded without a documented risk assessment | Third-Party / Vendor | 3 | 3 | 9 | Medium | GRC | Mitigated |
 
-**Totals: 3 High, 4 Medium, 3 Low.** Access control and third-party/vendor risk account for the majority of High-severity entries — consistent with where the HIPAA audit project independently found its highest-severity findings. Highest-priority open items: a documented vendor DPA/onboarding requirement (R-04) and closing the 2 over-broad role definitions already identified by the HIPAA audit (R-07).
+**Totals: 3 High, 4 Medium, 3 Low.** Access control and third-party/vendor risk account for the majority of High-severity entries — consistent with where the HIPAA audit project independently found its highest-severity findings. Highest-priority open items: a documented vendor DPA/onboarding requirement (R-04) and closing the 2 over-broad role definitions already identified by the HIPAA audit (R-07). (All figures above are inherent risk — see Residual Risk below for levels after in-flight treatment is factored in.)
+
+## Residual Risk (Post-Treatment)
+
+The table above scores **inherent risk** — before any treatment is factored in. A register that only shows inherent risk can't tell a reader which open items are actually being knocked down by controls already in flight, so this adds a second pass using one documented rule instead of eyeballed re-scoring:
+
+- **Open** (no treatment started): residual = inherent, unchanged.
+- **Mitigating / In Progress** (partial control in place): Likelihood reduced by 1 (floor of 1). Impact is left as-is — a control still rolling out changes how *often* the risk fires, not how bad it is *if* it fires.
+- **Mitigated** (control fully implemented): Likelihood reduced by 2 (floor of 1), same reasoning.
+
+| ID | Status | Residual L | Residual I | Residual Score | Residual Band | Change |
+|----|--------|-----------|-----------|-----------------|----------------|--------|
+| R-01 | Mitigating | 3 | 4 | 12 | Medium | 16 High → 12 Medium |
+| R-02 | Open | 2 | 4 | 8 | Medium | No change |
+| R-03 | Mitigated | 1 | 3 | 3 | Low | 6 Low → 3 Low |
+| R-04 | Open | 3 | 5 | 15 | High | No change |
+| R-05 | Open | 2 | 3 | 6 | Low | No change |
+| R-06 | Mitigating | 2 | 4 | 8 | Medium | 12 Medium → 8 Medium |
+| R-07 | In Progress | 2 | 5 | 10 | Medium | 15 High → 10 Medium |
+| R-08 | Open | 2 | 5 | 10 | Medium | No change |
+| R-09 | Open | 2 | 3 | 6 | Low | No change |
+| R-10 | Mitigated | 1 | 3 | 3 | Low | 9 Medium → 3 Low |
+
+**Residual totals: 1 High, 5 Medium, 4 Low** (down from 3 High / 4 Medium / 3 Low inherent). R-07 (over-broad role definitions) is doing the most work once it's fully closed out — it's the only High-severity item still only partially reduced, which is exactly why it stays the top open priority alongside R-04.
 
 Review cadence: full register reviewed quarterly alongside the User Access Review cycle; individual risks re-scored immediately if a related control changes (e.g., a new vendor onboarded, a role redefined).
 
